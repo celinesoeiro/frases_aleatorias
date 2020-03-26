@@ -6,14 +6,15 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Frases aleatórias',
+      title: 'Frases do dia',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(title: "Frases aleatórias"),
+      home: MyHomePage(title: ""),
     );
   }
 }
@@ -44,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter = Random().nextInt(10);
+      _counter = Random().nextInt(_frases.length);
     });
   }
 
@@ -58,22 +59,33 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset(
+              "images/logo.png"
+            ),
             Text(
               'Clique no botão para gerar uma nova frase:',
             ),
             Text(''),
-            Text(
-              _frases[_counter],
-              style: Theme.of(context).textTheme.subtitle,
-            ),
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: Text(
+                _frases[_counter],
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontStyle: FontStyle.italic,
+                  height: 2,
+                )
+              ),  
+            ),            
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.arrow_right),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ); 
   }
 }
