@@ -1,2 +1,3 @@
-# primeiro_projeto
- 
+# primeiro projeto
+
+Frases aleatórias
